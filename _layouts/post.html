@@ -1,7 +1,7 @@
 ---
 layout: default
-disqus: false
-archive: false
+disqus: true
+archive: true
 post_class: post-template
 ---
 
@@ -32,7 +32,14 @@ post_class: post-template
                         {% endif %}
                     </div>
                     <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
-                        <a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a><a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a>
+                        {% if author.web %}
+                            <a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a>
+                        {% else %}
+                            <a class="link-dark" href="javascript:;">{{ author.display_name }}</a>
+                        {% endif %}
+                        {% if author.twitter %}
+                            <a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a>
+                        {% endif %}        
                         <span class="author-description">{{ author.description }}</span>
                     </div>
                 </div>
@@ -146,7 +153,7 @@ post_class: post-template
     <div class="container">
         <div id="comments" class="row justify-content-center mb-5">
             <div class="col-md-8">
-                {% include disqus.html %}
+                
             </div>
         </div>
     </div>
